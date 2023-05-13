@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\my_user;
 use Illuminate\Http\Request;
+use App\Http\Controllers\EmailController;
 
 class UserController extends Controller
 {
@@ -85,6 +86,9 @@ class UserController extends Controller
         $User->password = $request->password;
         $User->save();
 
+        // send email to the admin 
+         $emailController = new EmailController();
+         $emailController->send($User->user_name);
 
         return response()->json([
             'message' => 'User registered successfully!',
