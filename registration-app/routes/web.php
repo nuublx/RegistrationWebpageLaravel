@@ -17,14 +17,20 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    // $user = new UserController();
-    // return $user->create();
     return redirect('/register');
 });
 Route::get('/register', function () {
+    App::setlocale('en');
     $user = new UserController();
     return $user->create();
 });
+
+Route::get('/register/{lang}', function ($lang) {
+    App::setlocale($lang);
+    $user = new UserController();
+    return $user->create();
+});
+
 Route::post('/register', function (Request $request) {
     $user = new UserController();
     return $user->store($request);
@@ -34,7 +40,7 @@ Route::get('/actors', function () {
     $actors = new ActorsController();
     return $actors->create();
 });
-Route::get('/actors/data', function (Request $request) {
+Route::get('/actors/data/', function (Request $request) {
     $actors = new ActorsController();
     return $actors->index($request);
 });

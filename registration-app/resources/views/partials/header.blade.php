@@ -1,5 +1,5 @@
 <nav class="navbar">
-    <div class="title">Registration form</div>
+    <div class="title">{{__('msg.register')}}</div>
     <a href="/" class="button-nav">
       <span class="bar"></span>
       <span class="bar"></span>
@@ -8,7 +8,7 @@
     <div class="navbar-links">
       <ul>
         <li>
-          <a href="/register"><strong>Sign up</strong></a>
+          <a href="/register"><strong>{{__('msg.signup')}}</strong></a>
         </li>
       </ul>
     </div>

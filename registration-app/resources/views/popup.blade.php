@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Actors Born on That Day</title>
+  <title>{{__('msg.actors_on_day')}}</title>
   <style>
     body {
   font-family: Arial, sans-serif;
@@ -61,7 +61,7 @@ li:hover {
   </style>
 </head>
 <body>
-  <h1>Actors Born on That Day</h1>
+  <h1>{{__('msg.actors_on_day')}}</h1>
   <ul id="myList"></ul>
 </body>
 </html>

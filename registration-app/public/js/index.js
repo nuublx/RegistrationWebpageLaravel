@@ -222,33 +222,6 @@ form.addEventListener("submit", (e) => {
     e.preventDefault();
     // MAKING SURE ALL FIELDS ARE VALID
     if (validateAllFields()) {
-        // const form = document.getElementById("my-form");
-
-        // const xhr = new XMLHttpRequest();
-
-        // xhr.open("POST", "/");
-
-        // xhr.send(new FormData(form));
-
-        // xhr.onload = function () {
-        //     let resp = JSON.parse(xhr.response);
-        //     let notify = document.getElementById("notify");
-        //     if (xhr.status === 201) {
-        //         //good news
-        //         notify.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert" style="width:22%;z-index:2;">${resp["message"]}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
-
-        //         // if (resp["response"] == 1)
-        //         // else if (resp["response"] == -1)
-        //         // else if (resp["response"] == -2)
-        //         //     notify.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert" style="width:22%; z-index:2;">Username already exists!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
-        //     } else if (xhr.status == 302) {
-        //         //bad news user_name already exists
-        //         notify.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert" style="width:22%; z-index:2;">${resp["message"]}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
-        //     } else if (xhr.status == 400) {
-        //         //error in database
-        //         notify.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert" style="width:22%; z-index:2;">${resp["message"]}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
-        //     }
-        // };
         const formData = new FormData(form);
         console.log(formData);
 
@@ -293,10 +266,17 @@ form.addEventListener("submit", (e) => {
 // -------------------- ACTORS BORN FUNCTION (USING AJAX REQUEST) ----------------------------
 
 /*----------- THIS FUNCTION RENDERS POPUP.HTML AND SHOWS ALL ACTORS BORN ON THE SAME DAY AND MONTH THE USER ENTERED */
+const removeSubdomainsFromUrl = function (url) {
+    // Remove protocol (e.g., http:// or https://)
+    let withoutProtocol = url.replace(/^(https?:\/\/)?/, "");
 
+    // Remove subdomains
+    let parts = withoutProtocol.split(".");
+    let domain = parts.slice(-2).join(".");
+
+    return domain;
+};
 const getActors = async function () {
-    var xhttp = new XMLHttpRequest();
-
     if (birthValidation()) {
         // check if birthdate is entered
 
@@ -307,23 +287,29 @@ const getActors = async function () {
 
         const birthdate = document.getElementById("birthdate").value;
 
-        var date = new Date(birthdate);
+        const date = new Date(birthdate);
 
-        var month = date.getMonth() + 1; // Add 1 because getMonth() returns values from 0 to 11
-        var day = date.getDate();
+        const month = date.getMonth() + 1; // Add 1 because getMonth() returns values from 0 to 11
+        const day = date.getDate();
         console.log(month);
 
-        var url = "actors/data?month=" + month + "&day=" + day;
+        const url = "/actors/data?month=" + month + "&day=" + day;
+        let basePath = window.location.href.replace(
+            window.location.pathname,
+            ""
+        );
 
-        let path = "actors";
-        let HTMLurl = window.location.href + path;
-
+        console.log(window.location.href);
+        console.log(basePath);
+        let HTMLurl = `${basePath}/actors`;
+        console.log(HTMLurl);
         let popup = window.open(
             HTMLurl,
-            "Actors Born on that day",
+            "Actors Born on that Day",
             "width=400,height=600"
         );
         popup.addEventListener("load", function () {
+            let xhttp = new XMLHttpRequest();
             xhttp.open("GET", url, true);
             xhttp.send();
 
