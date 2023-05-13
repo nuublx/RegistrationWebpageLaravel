@@ -17,8 +17,9 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    $user = new UserController();
-    return $user->create();
+    // $user = new UserController();
+    // return $user->create();
+    return redirect('/register');
 });
 Route::get('/register', function () {
     $user = new UserController();
