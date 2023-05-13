@@ -87,8 +87,8 @@ class UserController extends Controller
         $User->save();
 
         // send email to the admin 
-         $emailController = new EmailController();
-         $emailController->send($User->user_name);
+        $emailController = new EmailController();
+        $emailController->send($User->user_name);
 
         return response()->json([
             'message' => 'User registered successfully!',
