@@ -38,6 +38,17 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
+            // $request->validate([
+    //     'user_name' => 'required|max:20',
+    //     'full_name' => 'required|max:50',
+    //     'birth_date' => 'required|date', 
+    //     'phone' => 'required|max:20', 
+    //     'address' => 'required|max:100', 
+    //     'user_image' => 'required|max:100', 
+    //     'email' => 'required|email|max:50', 
+    //     'password' => 'required|max:100'
+    // ]);
+
         if ($request->user_name == null || $request->full_name == null || $request->birth_date == null || $request->phone == null || $request->address == null || $request->email == null || $request->password == null)
             return response()->json([
                 'message' => 'Please fill all the fields',
