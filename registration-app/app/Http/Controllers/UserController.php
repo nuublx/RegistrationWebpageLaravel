@@ -56,12 +56,6 @@ class UserController extends Controller
             ], 400);
         }
 
-        if ($request->user_name == null || $request->full_name == null || $request->birth_date == null || $request->phone == null || $request->address == null || $request->email == null || $request->password == null)
-            return response()->json([
-                'message' => 'Please fill all the fields',
-                'status' => 400
-            ], 400);
-
         if (my_user::where('user_name', $request->user_name)->exists())
             return response()->json([
                 'message' => 'Username already exists',
