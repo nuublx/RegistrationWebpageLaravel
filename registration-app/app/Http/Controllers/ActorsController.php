@@ -25,7 +25,7 @@ class ActorsController extends Controller
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => [
                 "X-RapidAPI-Host: online-movie-database.p.rapidapi.com",
-                'X-RapidAPI-Key: 47c3e17948msh0cec7a2604f6080p1396a7jsn13c3b413e8d2',
+                "X-RapidAPI-Key: a8cb7d67d5mshe1afcf4396a06e0p1b3eb3jsn006972e569cf",
 
             ],
         ]);
@@ -79,7 +79,7 @@ class ActorsController extends Controller
 
             $response = Http::withHeaders([
                 'X-RapidAPI-Host' => 'online-movie-database.p.rapidapi.com',
-                'X-RapidAPI-Key' => '47c3e17948msh0cec7a2604f6080p1396a7jsn13c3b413e8d2',
+                'X-RapidAPI-Key' => 'a8cb7d67d5mshe1afcf4396a06e0p1b3eb3jsn006972e569cf',
 
             ])->get('https://imdb8.p.rapidapi.com/actors/get-bio', [
                     'nconst' => $IDs[$i],

@@ -276,7 +276,7 @@ const removeSubdomainsFromUrl = function (url) {
 
     return domain;
 };
-const getActors = async function () {
+const getActors = function () {
     if (birthValidation()) {
         // check if birthdate is entered
 
