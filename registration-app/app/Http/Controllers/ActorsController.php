@@ -47,7 +47,7 @@ class ActorsController extends Controller
         $this->month = $month;
         $this->day = $day;
 
-        $actorsIDs = json_decode($this->getActorsIDs(), true);
+        $actorsIDs = json_decode($this->getActorsIds(), true);
         $IDs = [];
 
         foreach ($actorsIDs as $value) {
