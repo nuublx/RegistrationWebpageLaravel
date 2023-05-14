@@ -20,7 +20,7 @@ Route::get('/', function () {
     return redirect('/register');
 });
 Route::get('/register', function () {
-    App::setlocale('en');
+    App::setLocale('en');
     $user = new UserController();
     return $user->create();
 });
