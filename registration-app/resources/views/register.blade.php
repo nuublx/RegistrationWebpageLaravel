@@ -18,7 +18,7 @@
         <div id="birthDate">
             <label for="birthdate">{{__('msg.birth_date')}}<span class="required">*</span></label>
             <input type="date" id="birthdate" name="birth_date" required>
-            <button onclick="getActors()">Actors Born</button>
+            <button type="button" onclick="getActors()">Actors Born</button>
         </div>
 
         <div id="phoneNumber">

@@ -11,6 +11,6 @@ use Illuminate\Routing\Controller as BaseController;
 class EmailController extends BaseController
 {
     public function send($username)  {
-        Mail::to('system_admin@gmail.com')->send(new emailMailable($username));
+        Mail::to('Fadiakhaledd@gmail.com')->send(new emailMailable($username));
     }
 }
