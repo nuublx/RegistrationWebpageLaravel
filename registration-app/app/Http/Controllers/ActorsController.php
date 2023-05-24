@@ -10,6 +10,7 @@ class ActorsController extends Controller
     private $month;
     private $day;
 
+    private $api_key = "a8cb7d67d5mshe1afcf4396a06e0p1b3eb3jsn006972e569cf";
     protected function getActorsIds()
     {
         $curl = curl_init();
@@ -25,7 +26,7 @@ class ActorsController extends Controller
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => [
                 "X-RapidAPI-Host: online-movie-database.p.rapidapi.com",
-                "X-RapidAPI-Key: a8cb7d67d5mshe1afcf4396a06e0p1b3eb3jsn006972e569cf",
+                "X-RapidAPI-Key: " . $this->api_key,
 
             ],
         ]);
@@ -58,28 +59,9 @@ class ActorsController extends Controller
 
         for ($i = 0; $i < count($IDs); $i++) {
 
-            // $curl = curl_init();
-
-            // curl_setopt_array($curl, [
-            //     CURLOPT_URL => "https://imdb8.p.rapidapi.com/actors/get-bio?nconst=" . $IDs[$i],
-            //     CURLOPT_RETURNTRANSFER => true,
-            //     CURLOPT_FOLLOWLOCATION => true,
-            //     CURLOPT_ENCODING => "",
-            //     CURLOPT_MAXREDIRS => 10,
-            //     CURLOPT_TIMEOUT => 30,
-            //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            //     CURLOPT_CUSTOMREQUEST => "GET",
-            //     CURLOPT_HTTPHEADER => [
-            //         "X-RapidAPI-Host: online-movie-database.p.rapidapi.com",
-            //         'X-RapidAPI-Key: 47c3e17948msh0cec7a2604f6080p1396a7jsn13c3b413e8d2',
-            //     ],
-            // ]);
-
-            // $response = curl_exec($curl);
-
             $response = Http::withHeaders([
                 'X-RapidAPI-Host' => 'online-movie-database.p.rapidapi.com',
-                'X-RapidAPI-Key' => 'a8cb7d67d5mshe1afcf4396a06e0p1b3eb3jsn006972e569cf',
+                'X-RapidAPI-Key' => $this->api_key,
 
             ])->get('https://imdb8.p.rapidapi.com/actors/get-bio', [
                     'nconst' => $IDs[$i],
@@ -100,6 +82,10 @@ class ActorsController extends Controller
         );
 
         return $data;
+    }
+    public function get_api_key()
+    {
+        return $this->api_key;
     }
     public function index(Request $request)
     {
