@@ -21,5 +21,6 @@ return [
     //Header
     'signup' => 'تسجيل',
     'register' => 'نموذج التسجيل',
+    'change_lang' => 'تغيير اللغة',
 ]
     ?>

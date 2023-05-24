@@ -3,6 +3,7 @@
   (2) -> FORM SUBMISSION AJAX REQUEST
   (3) -> ACTORS BORN BUTTON SUBMISSION AJAX REQUEST
   (4) -> EVENT LISTENERS ON EVERY FIELD THAT IS MANDATORY TO CHECK IF ITS VALID OR NOT (ALL FIELDS ARE MANDATORY)
+  (5) -> EVENT LISTENER ON CHANGE_LANG BUTTON 
 */
 const fullName = document.getElementById("full_name");
 const username = document.getElementById("user_name");
@@ -14,6 +15,7 @@ const confirm_password = document.getElementById("confirm_password");
 const userImage = document.getElementById("user_image");
 const emailAddress = document.getElementById("email");
 
+const changeLang = document.getElementById("change_lang");
 // opens and closes submit button
 const switchButton = function (choice) {
     const myButton = document.getElementById("submit");
@@ -580,5 +582,16 @@ username.addEventListener("blur", () => {
             switchButton(1);
             document.getElementById("username_error").remove();
         }
+    }
+});
+
+/**********************************(5)*********************************/
+// EVENT LISTENER ON CHANGE_LANG BUTTON
+changeLang.addEventListener("click", () => {
+    const signup = document.getElementById("signup");
+    if (signup.textContent == "Sign Up") {
+        changeLang.setAttribute("href", "/register/ar");
+    } else {
+        changeLang.setAttribute("href", "/register/en");
     }
 });

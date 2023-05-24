@@ -8,7 +8,10 @@
     <div class="navbar-links">
       <ul>
         <li>
-          <a href="/register"><strong>{{__('msg.signup')}}</strong></a>
+          <a id="signup" href="/register"><strong>{{__('msg.signup')}}</strong></a>
+        </li>
+        <li>
+          <a id="change_lang" href=""><strong>{{__('msg.change_lang')}}</strong></a>
         </li>
       </ul>
     </div>
